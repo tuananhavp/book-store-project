@@ -1,24 +1,26 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import book1 from "../../assets/books/book-1.png";
 import book2 from "../../assets/books/book-2.png";
 import book3 from "../../assets/books/book-3.png";
 const Banner = () => {
   return (
-    <main className="md:flex-row  flex flex-col-reverse items-center justify-between md:h-[378px] h-[578px] gap-12 mt-20 ">
+    <main className="md:flex-row  flex flex-col-reverse items-center justify-between md:h-[378px] h-[578px] gap-12 md:mt-20 mt-36 py-16 ">
       {/* Left Side */}
       <div className="md:w-[45%] w-full">
         <h1 className="md:text-5xl text-2xl font-medium">
           New Releases This Week
         </h1>
         <p className="text-base md:mt-6 mt-5">
-          It's time to update your reading list with some of the latest and
+          It&apos;s time to update your reading list with some of the latest and
           greatest releases in the literary world. From heart-pumping thrillers
-          to captivating memoirs, this week's new releases offer something for
-          everyone
+          to captivating memoirs, this week&apos;s new releases offer something
+          for everyone.
         </p>
+
         <Link to={"/"}>
-          <button className="btn-primary md:mt-9 mt-5">Subcribe</button>
+          <button className="btn-primary md:mt-9 mt-5 py-2 px-12">
+            Subcribe
+          </button>
         </Link>
       </div>
       {/* Right */}

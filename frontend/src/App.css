@@ -10,7 +10,6 @@
     -1px 1px 3px 0px rgba(254, 175, 56, 0.1),
     0px 0px 0px 0px rgba(254, 175, 56, 0.1);
   display: inline-flex;
-  padding: 7px 49px;
   align-items: flex-start;
   gap: 10px;
   color: var(--Text-color-for-black-BG, #fffff8);

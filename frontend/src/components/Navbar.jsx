@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { HiMiniBars3CenterLeft } from "react-icons/hi2";
 import { IoSearchSharp } from "react-icons/io5";
@@ -67,7 +67,7 @@ const Navbar = () => {
                   />
                 </button>
                 {isDropdownOpen && (
-                  <div className="absolute top-10 -left-5 mt-2 w-48 bg-white shadow-lg rounded-md z-40">
+                  <div className="absolute top-10 -left-14 mt-2 w-48 bg-white shadow-lg rounded-md z-40">
                     <ul className="py-2">
                       {navigation.map((item) => {
                         return (
