@@ -61,31 +61,37 @@ const TopSeller = () => {
 
       {/* Show the Books */}
       <Swiper
-        slidesPerView={3}
-        spaceBetween={15}
         navigation={{
           enabled: true,
           hideOnClick: true,
         }}
         pagination={{
-          clickable: true,
+          dynamicBullets: true,
         }}
         breakpoints={{
+          200: {
+            sliderPerView: 1,
+            spaceBetween: 10,
+          },
           640: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 0,
           },
           768: {
             slidesPerView: 2,
-            spaceBetween: 10,
+            spaceBetween: 60,
           },
           1024: {
             slidesPerView: 2,
             spaceBetween: 10,
           },
           1180: {
+            slidesPerView: 2,
+            spaceBetween: 70,
+          },
+          1700: {
             slidesPerView: 3,
-            spaceBetween: 10,
+            spaceBetween: 0,
           },
         }}
         modules={[Pagination, Navigation]}

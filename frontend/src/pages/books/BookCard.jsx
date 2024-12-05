@@ -1,12 +1,13 @@
 import { getImgUrl } from "../../utils/getImgUrl";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import PropTypes from "prop-types";
 
 const BookCard = ({ book }) => {
   return (
-    <div className="pb-4 px-10">
-      <div className="flex gap-3 items-center mt-9 round-lg">
+    <div className="pb-4 px-11">
+      <div className="lg:flex gap-3 items-center mt-9 round-lg">
         {/* Left Side */}
-        <div className="sm:h-72 sm:flex-shrink-0 border rounded-md">
+        <div className="sm:h-72 sm:flex-shrink-0 rounded-md">
           <img
             className="w-full bg-cover p-2 rounded-md cursor-pointer hover:scale-105 transition-all duration-200"
             src={getImgUrl(book.coverImage)}
@@ -16,10 +17,14 @@ const BookCard = ({ book }) => {
 
         {/* Right Side */}
         <div className="p-3">
-          <h3 className="font-medium text-lg">{book.title}</h3>
-          <p className="font-secondary font-light mt-4">
-            {book.description.length > 80
-              ? `${book.description.slice(0, 80)}...`
+          <h3 className="font-medium text-lg">
+            {book.title.length > 15
+              ? `${book.description.slice(0, 15)}...`
+              : book.title}
+          </h3>
+          <p className="xl:inline-block hidden font-secondary font-light mt-4">
+            {book.description.length > 53
+              ? `${book.description.slice(0, 53)}...`
               : book.description}
           </p>
           <p className="mt-4 font-secondary font-semibold">
@@ -38,4 +43,7 @@ const BookCard = ({ book }) => {
   );
 };
 
+BookCard.propTypes = {
+  book: PropTypes.object.isRequired,
+};
 export default BookCard;
