@@ -42,7 +42,7 @@ const TopSeller = () => {
   return (
     <div className="mt-20">
       {/* Selection Part */}
-      <h1 className="font-semibold ">Top Seller</h1>
+      <h1 className="font-semibold text-2xl">Top Seller</h1>
       <select
         value={selectedCategory}
         className="p-3 bg-slate-100 rounded-lg focus-visible: mt-7"
