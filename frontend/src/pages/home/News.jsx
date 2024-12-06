@@ -48,7 +48,7 @@ const News = () => {
     },
   ];
   return (
-    <div className="mt-20">
+    <div className="mt-48">
       <h1 className="font-semibold mt-20 text-2xl">News</h1>
       <Swiper
         className="mt-10"
@@ -63,11 +63,7 @@ const News = () => {
           },
           640: {
             slidesPerView: 2,
-            spaceBetween: 60,
-          },
-          768: {
-            slidesPerView: 2,
-            spaceBetween: 60,
+            spaceBetween: 10,
           },
         }}
         modules={[Navigation]}
@@ -90,7 +86,11 @@ const News = () => {
                 </div>
                 {/* Right Side */}
                 <div className="lg:flex-shrink-0">
-                  <img src={item.image} alt="book-cover" />
+                  <img
+                    className="w-full object-cover hover:scale-105 transition-all"
+                    src={item.image}
+                    alt="book-cover"
+                  />
                 </div>
               </div>
             </SwiperSlide>
