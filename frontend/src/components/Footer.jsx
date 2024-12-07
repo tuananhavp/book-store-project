@@ -2,7 +2,7 @@ import logo from "../assets/footer-logo.png";
 import { FaFacebook, FaInstagram, FaXTwitter } from "react-icons/fa6";
 const Footer = () => {
   return (
-    <footer className="mt-48 bg-gray-800 text-white">
+    <footer className="mt-48 bg-gray-800 text-white rounded-lg">
       <div className="py-10 ">
         {/* Top side */}
         <div className="flex flex-col lg:flex-row justify-between md:items-center sm:px-28 px-8">
@@ -58,7 +58,7 @@ const Footer = () => {
         {/* Bottom side */}
         <div className="border-t-2 border-gray-700 mt-20 flex flex-col lg:flex-row justify-between md:items-center sm:px-28">
           {/* Left Side */}
-          <ul className="flex flex-col md:flex-row gap-10 mt-8 font-secondary font-semibold text-lg ">
+          <ul className="flex flex-col md:flex-row gap-10 mt-8 font-secondary font-semibold text-lg pr-8">
             <li>
               <a className="hover:text-blue-600" href="">
                 Privacy Policy

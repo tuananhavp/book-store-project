@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 
 const BookCard = ({ book }) => {
   return (
-    <div className="pb-4 px-11">
-      <div className="lg:flex gap-3 items-center mt-9 round-lg">
+    <div className="pb-8 px-11">
+      <div className="lg:flex gap-3 items-center mt-9 round-lg shadow-md hover:shadow-none">
         {/* Left Side */}
         <div className="lg:h-72 lg:flex-shrink-0 rounded-md">
           <Link to={`/book/${book._id}`}>

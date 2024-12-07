@@ -25,7 +25,7 @@ const Navbar = () => {
       href: "/checkout",
     },
   ];
-  const currentUser = true;
+  const currentUser = false;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   console.log(isDropdownOpen);
 
@@ -85,14 +85,19 @@ const Navbar = () => {
                 )}
               </>
             ) : (
-              <GoPerson className="size-6" />
+              <Link to={"/login"}>
+                <GoPerson className="size-6" />
+              </Link>
             )}
           </div>
 
           <div className="hidden md:block">
             <CiHeart className="size-6" />
           </div>
-          <Link className="md:flex hidden items-center bg-primary rounded-lg sm:px-6 px-2 p-1 space-x-3 hover:opacity-85  group">
+          <Link
+            to={"/cart"}
+            className="md:flex hidden items-center bg-primary rounded-lg sm:px-6 px-2 p-1 space-x-3 hover:opacity-85  group"
+          >
             <AiOutlineShoppingCart className="text-white size-6 group-hover:text-black" />
             <span className="text-white font-semibold group-hover:text-black">
               Basket
