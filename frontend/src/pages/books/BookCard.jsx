@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import PropTypes from "prop-types";
-
+import { addToCart } from "../../redux/features/cart/cartSlice";
+import { useDispatch } from "react-redux";
 const BookCard = ({ book }) => {
+  const dispatch = useDispatch();
+
+  const handleAddtoCart = (book) => {
+    dispatch(addToCart(book));
+  };
   return (
     <div className="pb-8 px-11">
       <div className="lg:flex gap-3 items-center mt-9 round-lg shadow-md hover:shadow-none">
@@ -41,7 +47,12 @@ const BookCard = ({ book }) => {
               {book.oldPrice}
             </span>
           </p>
-          <button className="btn-primary mt-4  p-2 group">
+          <button
+            className="btn-primary mt-4  p-2 group"
+            onClick={() => {
+              handleAddtoCart(book);
+            }}
+          >
             <AiOutlineShoppingCart className="text-white size-6 group-hover:text-black" />
             Add to Basket
           </button>

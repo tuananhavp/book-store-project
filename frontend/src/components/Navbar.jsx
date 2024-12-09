@@ -6,7 +6,11 @@ import { GoPerson } from "react-icons/go";
 import { CiHeart } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import avatarImg from "../assets/avatar.png";
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  console.log(cartItems);
   const navigation = [
     {
       name: "Dashboard",
@@ -27,7 +31,6 @@ const Navbar = () => {
   ];
   const currentUser = false;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  console.log(isDropdownOpen);
 
   return (
     <header className="max-w-[85%] py-6 mx-auto">
@@ -98,10 +101,16 @@ const Navbar = () => {
             to={"/cart"}
             className="md:flex hidden items-center bg-primary rounded-lg sm:px-6 px-2 p-1 space-x-3 hover:opacity-85  group"
           >
-            <AiOutlineShoppingCart className="text-white size-6 group-hover:text-black" />
-            <span className="text-white font-semibold group-hover:text-black">
-              Basket
-            </span>
+            <AiOutlineShoppingCart className="text-black size-6 group-hover:text-black" />
+            {cartItems.length > 0 ? (
+              <span className="text-black font-semibold group-hover:text-black">
+                {cartItems.length}{" "}
+              </span>
+            ) : (
+              <span className="text-black font-semibold group-hover:text-black">
+                Basket
+              </span>
+            )}
           </Link>
         </div>
       </nav>

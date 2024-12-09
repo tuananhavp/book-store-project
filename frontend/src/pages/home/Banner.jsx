@@ -26,17 +26,17 @@ const Banner = () => {
       {/* Right */}
       <div className="flex md:w-[45%] w-full mt-10 items-center ">
         <img
-          className="md:w-[328px] md:h-[398px] w-[278px] h-[278px] z-20 hover:translate-x-4 hover:scale-105 transition-transform"
+          className="md:w-[328px] md:h-[398px] w-[278px] h-[278px] z-20 hover:translate-x-4 hover:scale-105 transition-all duration-200"
           src={book1}
           alt="book1"
         />
         <img
-          className="md:w-[308px] md:h-[338px] w-[238px] h-[238px] -ml-36 mt-5 z-10 hover:translate-x-4 hover:scale-110 transition-transform"
+          className="md:w-[308px] md:h-[338px] w-[238px] h-[238px] -ml-36 mt-5 z-10 hover:translate-x-4 hover:scale-110 transition-transform duration-200"
           src={book2}
           alt="book1"
         />
         <img
-          className="md:w-[288px] md:h-[308px] w-[208px] h-[208px] -ml-36 mt-7 z-0 hover:translate-x-1 hover:scale-110 transition-transform"
+          className="md:w-[288px] md:h-[308px] w-[208px] h-[208px] -ml-36 mt-7 z-0 hover:translate-x-1 hover:scale-110 transition-transform duration-200"
           src={book3}
           alt="book1"
         />
