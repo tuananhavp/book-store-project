@@ -1,4 +1,3 @@
-import React from "react";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,9 +33,9 @@ const Cart = () => {
               onClick={() => {
                 handleClearFromCart();
               }}
-              className="px-5 py-1 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg"
+              className="px-5 py-0 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg"
             >
-              Clear Cart
+              Clear
             </button>
           </div>
           {/* Content */}
@@ -46,10 +45,10 @@ const Cart = () => {
                 cartItems.map((item) => {
                   return (
                     <>
-                      <li className="flex justify-between items-center shadow-md py-5 mb-5 px-5">
+                      <li className="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-baseline shadow-md py-5 mb-5 px-5">
                         {/* Left */}
-                        <div className="flex space-x-7 text-secondary">
-                          <div className="h-24 w-24 flex-shrink-0 rounded-md overflow-hidden border border-gray-400">
+                        <div className="flex space-x-7 text-secondary pr-3">
+                          <div className="h-24 w-24 sm:flex-shrink-0 rounded-md overflow-hidden border border-gray-400">
                             <img
                               src={getImgUrl(item.coverImage)}
                               alt=""
@@ -57,7 +56,7 @@ const Cart = () => {
                             />
                           </div>
                           <div>
-                            <h3 className="font-semibold mb-1 ">
+                            <h3 className="font-semibold mb-1 whitespace-nowrap overflow-hidden text-ellipsis w-20 md:w-full">
                               {item.title}
                             </h3>
                             <p className="mb-3">
@@ -99,16 +98,21 @@ const Cart = () => {
           </div>
           {/* Bottom */}
           <div>
-            <div className="flex justify-between items-center mb-1">
-              <h3 className="font-medium  text-secondary">Subtotal</h3>
+            <div className="flex justify-between mb-1">
+              <div className="pr-3">
+                <h3 className="font-medium  text-secondary">Subtotal</h3>
+                <p className="text-gray-700 mb-3">
+                  Shipping and taxes calculated at checkout
+                </p>
+              </div>
               <p className="text-gray-900">${totalPrice ? totalPrice : 0}</p>
             </div>
-            <p className="text-gray-700 mb-3">
-              Shipping and taxes calculated at checkout
-            </p>
-            <button className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold mb-5 hover:opacity-90">
-              Checkout
-            </button>
+
+            <Link to={"/checkout"}>
+              <button className="w-full py-2 rounded-lg bg-blue-600 text-white font-semibold mb-5 hover:opacity-90">
+                Checkout
+              </button>
+            </Link>
             <div className="flex justify-center">
               <Link className="text-blue-700 hover:text-blue-500" to={"/"}>
                 Continue Shopping →
