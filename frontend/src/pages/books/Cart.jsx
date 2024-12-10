@@ -33,7 +33,7 @@ const Cart = () => {
               onClick={() => {
                 handleClearFromCart();
               }}
-              className="px-5 py-0 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg"
+              className="px-5 py-1 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg"
             >
               Clear
             </button>
