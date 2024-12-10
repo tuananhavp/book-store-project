@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 const BookCard = ({ book }) => {
   const dispatch = useDispatch();
 
-  const handleAddtoCart = (book) => {
+  const handleAddToCart = (book) => {
     dispatch(addToCart(book));
   };
   return (
@@ -50,7 +50,7 @@ const BookCard = ({ book }) => {
           <button
             className="btn-primary mt-4  p-2 group"
             onClick={() => {
-              handleAddtoCart(book);
+              handleAddToCart(book);
             }}
           >
             <AiOutlineShoppingCart className="text-white size-6 group-hover:text-black" />

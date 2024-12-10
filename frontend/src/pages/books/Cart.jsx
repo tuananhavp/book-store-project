@@ -1,12 +1,24 @@
 import React from "react";
 import { getImgUrl } from "../../utils/getImgUrl";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearCart, removeFromCart } from "../../redux/features/cart/cartSlice";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const dispatch = useDispatch();
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price);
+  const totalPrice = cartItems
+    .reduce((total, item) => total + item.newPrice, 0)
+    .toFixed(2);
+
+  const handleRemoveFromCart = (book) => {
+    // Implement logic to remove item from cart
+    dispatch(removeFromCart(book));
+  };
+  const handleClearFromCart = (book) => {
+    dispatch(clearCart(book));
+  };
   console.log(cartItems);
 
   return (
@@ -18,7 +30,12 @@ const Cart = () => {
             <p className=" font-semibold text-lg text-secondary">
               Shopping Cart
             </p>
-            <button className="px-5 py-1 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg">
+            <button
+              onClick={() => {
+                handleClearFromCart();
+              }}
+              className="px-5 py-1 text-white font-semibold hover:opacity-85 bg-red-500 rounded-lg"
+            >
               Clear Cart
             </button>
           </div>
@@ -29,7 +46,7 @@ const Cart = () => {
                 cartItems.map((item) => {
                   return (
                     <>
-                      <li className="flex justify-between items-center shadow-md py-5 mb-5">
+                      <li className="flex justify-between items-center shadow-md py-5 mb-5 px-5">
                         {/* Left */}
                         <div className="flex space-x-7 text-secondary">
                           <div className="h-24 w-24 flex-shrink-0 rounded-md overflow-hidden border border-gray-400">
@@ -44,18 +61,31 @@ const Cart = () => {
                               {item.title}
                             </h3>
                             <p className="mb-3">
-                              <strong className="text-gray-700">
+                              <strong className="text-gray-700  text-sm">
                                 Category:{" "}
                               </strong>{" "}
                               {item.category}
                             </p>
                             <p>
-                              <strong className="text-gray-900">Qty: </strong> 1
+                              <strong className="text-gray-900 text-sm">
+                                Qty:{" "}
+                              </strong>{" "}
+                              1
                             </p>
                           </div>
                         </div>
                         {/* Right */}
-                        <span>${item.newPrice}</span>
+                        <div className="flex flex-col justify-between items-center gap-7">
+                          <span>${item.newPrice}</span>
+                          <button
+                            onClick={() => {
+                              handleRemoveFromCart(item);
+                            }}
+                            className="text-purple-500 text-sm hover:text-purple-400"
+                          >
+                            Remove
+                          </button>
+                        </div>
                       </li>
                     </>
                   );
