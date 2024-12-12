@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
-import { use, useState } from "react";
+import { useState } from "react";
 
 const CheckOutPage = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
@@ -46,7 +46,7 @@ const CheckOutPage = () => {
           <p className="text-gray-400 mb-3">Items: {cartItems.length}</p>
         </div>
         {/* Bottom side */}
-        <div className=" pb-20 bg-white">
+        <div className=" pb-20 bg-white shadow-lg">
           <div className="sm:px-10 px-5 pt-20 sm:flex justify-between">
             {/* Left Side */}
             <div className="pr-3">
