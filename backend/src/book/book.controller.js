@@ -23,9 +23,7 @@ const getABook = (req, res) => {
       if (!book) {
         return res.status(404).send({ message: "Book not found" });
       } else {
-        res
-          .status(200)
-          .send({ message: "You retrieved the book successfully", book });
+        res.status(200).json(book);
       }
     })
     .catch((error) => {
@@ -42,9 +40,7 @@ const getAllBooks = async (req, res) => {
     if (!books) {
       return res.status(404).send({ message: "No books found" });
     } else {
-      return res
-        .status(200)
-        .send({ message: "You get all books sucessfully", books });
+      return res.status(200).json(books);
     }
   } catch (error) {
     console.log("Error getting all books", error);

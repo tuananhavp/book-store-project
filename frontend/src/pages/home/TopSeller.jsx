@@ -1,7 +1,7 @@
 import BookCard from "../books/BookCard";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { fetchAllBook } from "../../redux/features/book/bookApi";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,6 +10,7 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 const TopSeller = () => {
   const categories = [
@@ -22,18 +23,25 @@ const TopSeller = () => {
     "Books",
   ];
   const [selectedCategory, setCategory] = useState("Choose your genre");
-  const [books, setBooks] = useState([]);
+  const books = useSelector((state) => state.book.books);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch the top selling books from an API
-    fetch("book.json")
-      .then((response) => response.json())
-      .then((data) => setBooks(data));
+    dispatch(fetchAllBook());
   }, []);
+
+  // const [books, setBooks] = useState([]);
+  // useEffect(() => {
+  //   // Fetch the top selling books from an API
+  //   fetch("http://localhost:5000/api/books/")
+  //     .then((response) => response.json())
+  //     .then((data) => setBooks(data))
+  //     .catch((err) => console.error("Failed to fetch books", err));
+  // }, []);
   const filterBook =
     selectedCategory === "Choose your genre"
       ? books
-      : books.filter(
+      : books?.filter(
           (book) => book.category === selectedCategory.toLowerCase()
         );
 
