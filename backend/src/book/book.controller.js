@@ -15,21 +15,19 @@ const createBook = async (req, res) => {
 };
 
 // Get a single book
-const getABook = (req, res) => {
-  const bookId = req.params.id;
-  Book.findById(bookId)
-    .exec()
-    .then((book) => {
-      if (!book) {
-        return res.status(404).send({ message: "Book not found" });
-      } else {
-        res.status(200).json(book);
-      }
-    })
-    .catch((error) => {
-      console.log("Error getting book", error);
-      res.status(500).send({ message: "Failed to get book", error });
-    });
+const getABook = async (req, res) => {
+  try {
+    const bookId = req.params.id;
+    const book = await Book.findById(bookId);
+    if (book) {
+      res.status(200).json(book);
+    } else {
+      res.status(404).send({ message: "Book not found" });
+    }
+  } catch (error) {
+    console.log("Failed to get a book", error);
+    res.status(500).send({ message: "Failed to get a book", error });
+  }
 };
 
 // Get all books

@@ -1,18 +1,36 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
   const [message, setMessage] = useState("");
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { signInUser, signInWithGoogle } = useAuth();
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    try {
+      signInUser(data.email, data.password);
+      alert("You logged in successfully!");
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing in user", error);
+      setMessage("Failed to sign in. Please check your credentials.");
+    }
+  };
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      await signInWithGoogle();
+      alert("You logged in successfully with Google!");
+      navigate("/");
+    } catch (error) {
+      console.error("Error signing in with Google", error);
+      alert("Failed to sign in with Google. Please try again later.");
+    }
+  };
   return (
     <div className="h-[calc(100vh-120px)] flex justify-center items-center flex-shrink-0">
       <div className="w-full max-w-sm shadow-2xl px-7 py-7">
@@ -70,7 +88,9 @@ const Login = () => {
         </p>
         <div className="bg-gray-900 text-white flex justify-center items-center space-x-4 px-1 py-2 rounded-md hover:opacity-85 mb-5">
           <FcGoogle />
-          <button className="font-bold">Sign in with Google</button>
+          <button onClick={handleSignInWithGoogle} className="font-bold">
+            Sign in with Google
+          </button>
         </div>
         <p className="text-sm font-secondary text-gray-500 text-center">
           ©2025 Book Store. All right reserved

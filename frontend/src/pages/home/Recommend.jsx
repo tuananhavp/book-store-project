@@ -10,15 +10,15 @@ import "swiper/css/navigation";
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllBook } from "../../redux/features/book/bookApi";
 
 const Recommend = () => {
-  const [books, setBooks] = useState([]);
+  const books = useSelector((state) => state.book.books);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Fetch the top selling books from an API
-    fetch("book.json")
-      .then((response) => response.json())
-      .then((data) => setBooks(data));
+    dispatch(fetchAllBook());
   }, []);
 
   return (

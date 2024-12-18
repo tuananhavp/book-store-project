@@ -1,18 +1,26 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const { signUpUser } = useAuth();
+  const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      await signUpUser(data.email, data.password);
+      alert("You have successfully signed up!");
+      navigate("/login");
+    } catch (err) {
+      setMessage("Please provide a valid email and password");
+      console.log("Failed to sign up", err);
+    }
+  };
   return (
     <div className="h-[calc(100vh-120px)] flex justify-center items-center flex-shrink-0">
       <div className="w-full max-w-sm shadow-2xl px-7 py-7">
@@ -59,7 +67,7 @@ const Register = () => {
             type="submit"
             className="bg-blue-500 w-full text-white px-10 py-1 font-bold rounded-lg hover:opacity-85 mt-3"
           >
-            Log in
+            Sign Up
           </button>
         </form>
         <p className="text-md font-secondary mt-5 mb-5">

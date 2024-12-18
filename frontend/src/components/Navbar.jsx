@@ -7,8 +7,10 @@ import { CiHeart } from "react-icons/ci";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import avatarImg from "../assets/avatar.png";
 import { useSelector } from "react-redux";
+import { useAuth } from "../context/AuthContext";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const { currentUser, logOut } = useAuth();
 
   console.log(cartItems);
   const navigation = [
@@ -29,9 +31,11 @@ const Navbar = () => {
       href: "/checkout",
     },
   ];
-  const currentUser = false;
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
+  const handleLogOut = () => {
+    logOut();
+  };
   return (
     <header className="max-w-[85%] py-6 mx-auto">
       <nav className="flex justify-between items-center space-x-9">
@@ -83,6 +87,12 @@ const Navbar = () => {
                           </Link>
                         );
                       })}
+                      <li
+                        onClick={handleLogOut}
+                        className="block px-4 py-2 text-sm hover:bg-gray-100"
+                      >
+                        Log Out
+                      </li>
                     </ul>
                   </div>
                 )}

@@ -13,6 +13,7 @@ const SingleBook = () => {
   const book = useSelector((state) => state.book.book);
   const dispatch = useDispatch();
 
+  console.log(book);
   const handleAddToCart = (book) => {
     dispatch(addToCart(book));
   };
@@ -37,13 +38,15 @@ const SingleBook = () => {
           <div className="mb-2">
             <strong>
               Category:&nbsp;{" "}
-              <span className="font-medium">{book.category}</span>
+              <span className="text-lg font-secondary text-gray-500">
+                {book.category}
+              </span>
             </strong>
           </div>
           <div className="mb-2">
             <strong>
               Published:&nbsp;
-              <span className="font-medium">
+              <span className="text-lg font-secondary text-gray-500">
                 {new Date(book.updatedAt).toLocaleDateString()}
               </span>
             </strong>
@@ -51,7 +54,9 @@ const SingleBook = () => {
           <div className="mb-2">
             <strong>
               Description:&nbsp;
-              <span className="font-medium">{book.description}</span>
+              <span className="text-lg font-secondary text-gray-500">
+                {book.description}
+              </span>
             </strong>
           </div>
           <button
