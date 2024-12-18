@@ -11,6 +11,7 @@ import { useAuth } from "../context/AuthContext";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const { currentUser, logOut } = useAuth();
+  console.log(currentUser);
 
   console.log(cartItems);
   const navigation = [
@@ -34,6 +35,7 @@ const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogOut = () => {
+    setIsDropdownOpen(false);
     logOut();
   };
   return (
