@@ -19,6 +19,7 @@ export const useAuth = () => {
 
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isChecked, setIsChecked] = useState(false);
 
   // Sign up user
   const signUpUser = async (email, password) => {
@@ -27,16 +28,19 @@ export const AuthProvider = ({ children }) => {
 
   // Sign in user
   const signInUser = async (email, password) => {
+    setIsChecked(true);
     return await signInWithEmailAndPassword(auth, email, password);
   };
 
   // Sign in with Google
   const signInWithGoogle = async () => {
+    setIsChecked(true);
     return await signInWithPopup(auth, googleProvider);
   };
 
   // Logout user
   const logOut = async () => {
+    setIsChecked(false);
     return await signOut(auth);
   };
 
@@ -60,6 +64,7 @@ export const AuthProvider = ({ children }) => {
     signInUser,
     signInWithGoogle,
     logOut,
+    isChecked,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

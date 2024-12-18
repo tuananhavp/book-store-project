@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import { useAuth } from "../context/AuthContext";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
-  const { currentUser, logOut } = useAuth();
+  const { currentUser, logOut, isChecked } = useAuth();
   console.log(currentUser);
 
   console.log(cartItems);
@@ -60,7 +60,7 @@ const Navbar = () => {
         {/* Right side */}
         <div className="relative flex justify-between items-center md:space-x-3 space-x-2">
           <div className="flex items-center">
-            {currentUser ? (
+            {currentUser && isChecked ? (
               <>
                 <button
                   onClick={() => {
