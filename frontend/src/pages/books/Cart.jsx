@@ -44,7 +44,7 @@ const Cart = () => {
               {cartItems.length > 0 ? (
                 cartItems.map((item) => {
                   return (
-                    <>
+                    <div key={item._id}>
                       <li className="flex sm:flex-row flex-col gap-5 justify-between sm:items-center items-baseline shadow-md py-5 mb-5 px-5">
                         {/* Left */}
                         <div className="flex space-x-7 text-secondary pr-3">
@@ -86,7 +86,7 @@ const Cart = () => {
                           </button>
                         </div>
                       </li>
-                    </>
+                    </div>
                   );
                 })
               ) : (
