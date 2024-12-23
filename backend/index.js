@@ -25,8 +25,10 @@ mongoose
 // Router
 const bookRouter = require("./src/book/book.route");
 const orderRouter = require("./src/order/order.route");
+const adminRouter = require("./src/users/user.route");
 app.use("/api/books/", bookRouter);
 app.use("/api/orders/", orderRouter);
+app.use("/admin", adminRouter);
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);

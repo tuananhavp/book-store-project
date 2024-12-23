@@ -20,6 +20,7 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Sign up user
   const signUpUser = async (email, password) => {
@@ -47,6 +48,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      setLoading(false);
       if (user) {
         const { email, displayName, photoURL } = user;
         const userData = {
@@ -65,6 +67,7 @@ export const AuthProvider = ({ children }) => {
     signInWithGoogle,
     logOut,
     isChecked,
+    loading,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

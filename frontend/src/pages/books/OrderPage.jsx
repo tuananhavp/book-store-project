@@ -7,7 +7,8 @@ const OrderPage = () => {
   console.log(orders);
 
   return (
-    <div className="mb-4">
+    <div className="container mx-auto p-6">
+      <h2 className="text-2xl font-semibold mb-4">Your Orders</h2>
       {orders?.map((order) => {
         return (
           <div className="mb-8" key={order._id}>
@@ -21,12 +22,12 @@ const OrderPage = () => {
               {order.address.city}, {order.address.state},
               {order.address.country}, {order.address.zipcode}
             </p>
-            {/* <p>Order Date: {new Date(order.orderDate).toLocaleString()}</p> */}
             <p>Total Price: ${order.totalPrice}</p>
+            <h3 className="font-semibold">Product ID:</h3>
             <ul>
               {order.productIds.map((item) => (
                 <li key={item.id}>
-                  <p>Product ID: {item}</p>
+                  <p>{item}</p>
                 </li>
               ))}
             </ul>

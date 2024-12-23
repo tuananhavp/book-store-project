@@ -11,7 +11,6 @@ import { useAuth } from "../context/AuthContext";
 const Navbar = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const { currentUser, logOut, isChecked } = useAuth();
-  console.log(currentUser);
 
   console.log(cartItems);
   const navigation = [
@@ -60,7 +59,7 @@ const Navbar = () => {
         {/* Right side */}
         <div className="relative flex justify-between items-center md:space-x-3 space-x-2">
           <div className="flex items-center">
-            {currentUser && isChecked ? (
+            {currentUser ? (
               <>
                 <button
                   onClick={() => {

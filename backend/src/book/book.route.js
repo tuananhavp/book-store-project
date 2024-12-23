@@ -7,10 +7,11 @@ const {
   updateABook,
   getABook,
 } = require("./book.controller");
+const { verifyToken } = require("../middleware/verifyAdminToken");
 
-router.post("/create", createBook);
-router.delete("/delete/:id", deleteABook);
-router.put("/update/:id", updateABook);
+router.post("/create", verifyToken, createBook);
+router.delete("/delete/:id", verifyToken, deleteABook);
+router.put("/update/:id", verifyToken, updateABook);
 router.get("/:id", getABook);
 router.get("/", getAllBooks);
 

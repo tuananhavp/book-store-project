@@ -19,7 +19,6 @@ const getOrdersByEmail = async (req, res) => {
   try {
     const email = req.params.email;
     const orders = await Order.find({ email });
-    console.log(email);
     if (!orders) {
       return res.status(404).json({ message: "Order not found" });
     }
