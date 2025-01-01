@@ -17,7 +17,7 @@ const adminSignIn = async (req, res) => {
     const token = jwt.sign(
       { username, password },
       process.env.TOKEN_SECRECT_KEY,
-      { expiresIn: "1h" }
+      { expiresIn: "30s" }
     );
 
     return res
