@@ -22,7 +22,7 @@ const DashBoardLayout = () => {
 
   return (
     <>
-      <div className="flex flex-wrap">
+      <div className="grid">
         {/* Side Bar */}
         <aside className="min-h-screen flex flex-col justify-between bg-gray-800">
           {/* Navigation */}
@@ -77,10 +77,10 @@ const DashBoardLayout = () => {
         </aside>
 
         {/* Main Content */}
-        <div className="flex-grow">
+        <div className="col-start-2 col-end-13">
           {/* Header */}
           <header className="bg-white flex flex-nowrap items-center justify-between py-3">
-            <div className="px-10 ml-8 py-34 flex space-x-5 items-center">
+            <div className="px-10 ml-8 flex gap-5 items-center">
               <IoSearchSharp className="size-5" />
               <input
                 className="focus:outline-none font-primary"
@@ -88,17 +88,21 @@ const DashBoardLayout = () => {
                 placeholder="Search..."
               />
             </div>
-            <div className="flex space-x-10 mr-14">
+            <div className="flex gap-10 mr-5">
               {/* Account Info */}
-              <div className="flex items-center space-x-3 ">
-                <div>
-                  <h3 className="font-bold text-secondary">Ngô Tuấn Anh</h3>
-                  <span className="text-sm line-clamp-1">Admin</span>
+              <div className="flex items-center space-x-3">
+                <div className="min-w-7">
+                  <h3 className="hidden md:block font-bold text-secondary">
+                    Ngô Tuấn Anh
+                  </h3>
+                  <span className="hidden md:block text-sm line-clamp-1">
+                    Admin
+                  </span>
                 </div>
-                <img src={avatar} className="object-cover size-10" alt="" />
+                <img src={avatar} className="object-cover size-10 " alt="" />
               </div>
               {/* Logout and NotiNoti */}
-              <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center justify-between gap-4 ml-2">
                 <IoNotificationsOutline className="size-6 hover:text-gray-600" />
                 <IoLogOutOutline
                   onClick={handleLogout}
@@ -108,16 +112,16 @@ const DashBoardLayout = () => {
             </div>
           </header>
           <main className="bg-gray-100 min-h-screen p-12">
-            <div className="flex justify-between items-center">
+            <div className="md:flex justify-between items-center mb-10">
               <div className="flex flex-col gap-1">
-                <span className="font-semibold text-blue-950 text-4xl">
+                <span className="hidden md:block font-semibold text-blue-950 text-4xl">
                   Dashboard
                 </span>
-                <span className="text-sm font-bold text-gray-400">
+                <span className="hidden md:block text-sm font-bold text-gray-400">
                   Book Store Inventory
                 </span>
               </div>
-              <div className="flex gap-3">
+              <div className="flex gap-3 items-center px-2">
                 {/* Manage Book */}
                 <Link
                   className=" flex items-center justify-between bg-purple-700 text-white gap-3 border-2 border-solid border-purple-700 px-5  py-3 rounded-xl hover:opacity-85"
