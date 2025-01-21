@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
 
 export const fetchAllBook = createAsyncThunk("books/FetchBookApi", async () => {
   const response = await fetch("http://localhost:5000/api/books/");
@@ -12,6 +13,20 @@ export const fetchABook = createAsyncThunk(
     return response.json();
   }
 );
+
+export const deleteABook = createAsyncThunk("books/deleteABook", async (id) => {
+  const token = localStorage.getItem("token");
+  const response = await axios.delete(
+    `http://localhost:5000/api/books/delete/${id}`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  console.log(response);
+  return id;
+});
 
 const initialState = {
   book: {},
@@ -39,6 +54,10 @@ const bookSlice = createSlice({
       });
     builder.addCase(fetchABook.fulfilled, (state, action) => {
       state.book = action.payload;
+      state.loading = false;
+    });
+    builder.addCase(deleteABook.fulfilled, (state, action) => {
+      state.books = state.books.filter((book) => book._id !== action.payload);
       state.loading = false;
     });
   },

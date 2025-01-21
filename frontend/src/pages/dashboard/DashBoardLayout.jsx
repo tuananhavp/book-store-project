@@ -22,9 +22,9 @@ const DashBoardLayout = () => {
 
   return (
     <>
-      <div className="grid">
+      <div className="flex">
         {/* Side Bar */}
-        <aside className="min-h-screen flex flex-col justify-between bg-gray-800">
+        <aside className="min-h-screen col-span-1 flex flex-col justify-between bg-gray-800">
           {/* Navigation */}
           <div>
             <div className="flex flex-grow justify-center items-center py-7 hover:bg-purple-700">
@@ -77,7 +77,7 @@ const DashBoardLayout = () => {
         </aside>
 
         {/* Main Content */}
-        <div className="col-start-2 col-end-13">
+        <div className="flex-grow">
           {/* Header */}
           <header className="bg-white flex flex-nowrap items-center justify-between py-3">
             <div className="px-10 ml-8 flex gap-5 items-center">
