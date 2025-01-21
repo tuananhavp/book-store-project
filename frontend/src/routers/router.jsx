@@ -11,7 +11,7 @@ import OrderPage from "../pages/books/OrderPage";
 import AdminLogin from "../components/AdminLogin";
 import DashBoard from "../pages/dashboard/DashBoard";
 import AdminRoute from "./AdminRoute";
-import AddBook from "../pages/dashboard/AddBook";
+import AddBook from "../pages/dashboard/addBook/AddBook";
 import UpdateBook from "../pages/dashboard/UpdateBook";
 import ManageBooks from "../pages/dashboard/ManageBooks";
 import DashBoardLayout from "../pages/dashboard/DashBoardLayout";

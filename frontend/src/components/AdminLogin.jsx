@@ -23,11 +23,11 @@ const AdminLogin = () => {
       const auth = response.data;
       if (auth.token) {
         localStorage.setItem("token", auth.token);
-        setTimeout(() => {
-          localStorage.removeItem("token");
-          alert("Token has been expired!, Please login again.");
-          navigate("/");
-        }, 60 * 1000);
+        // setTimeout(() => {
+        //   localStorage.removeItem("token");
+        //   alert("Token has been expired!, Please login again.");
+        //   navigate("/");
+        // }, 60 * 1000);
       }
       console.log(auth);
       setMessage("");

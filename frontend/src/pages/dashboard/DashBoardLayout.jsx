@@ -49,7 +49,7 @@ const DashBoardLayout = () => {
                 </Link>
               </li>
               <li className="flex justify-center py-4">
-                <Link to={"/dashboard/edit-book"}>
+                <Link to={"/"}>
                   <div className="py-3 px-5 rounded-md hover:bg-slate-200 group">
                     <IoApps className="text-gray-400 size-5 group-hover:text-gray-900" />
                   </div>
@@ -133,7 +133,7 @@ const DashBoardLayout = () => {
                 {/* Add New Book */}
                 <Link
                   className=" flex items-center justify-between gap-3 border-2 border-solid border-purple-700 px-5  py-3 rounded-xl group hover:bg-purple-700 hover:opacity-85"
-                  to={"/dashboard/add-book"}
+                  to={"/dashboard/manage-books"}
                 >
                   <FaPencil className="size-5 text-purple-700 group-hover:text-white" />
                   <span className="font-semibold text-purple-700 group-hover:text-white">
