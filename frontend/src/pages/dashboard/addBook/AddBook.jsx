@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import InputField from "./InputField";
 import SelectField from "./SelectField";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { addBook } from "../../../redux/features/book/bookApi";
+import Swal from "sweetalert2";
 
 const AddBook = () => {
   const options = [
@@ -12,12 +15,41 @@ const AddBook = () => {
     { value: "advanture", label: "Adventure" },
     { value: "marketing", label: "Marketing" },
   ];
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
   const [imageFileName, setimageFileName] = useState("");
   const [imageFile, setimageFile] = useState(null);
 
   const onSubmit = async (data) => {
     console.log(data);
+    const newData = {
+      title: data.title,
+      description: data.description,
+      category: data.category,
+      trending: data.trending,
+      coverImage: imageFileName,
+      oldPrice: data.oldPrice,
+      newPrice: data.newPrice,
+    };
+    console.log(newData);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Uploaded!",
+          text: "Your file has been uploaded.",
+          icon: "success",
+        });
+        dispatch(addBook(newData));
+      }
+    });
   };
 
   const handleFileChange = (e) => {
@@ -51,7 +83,7 @@ const AddBook = () => {
           <SelectField
             options={options}
             label={"Category"}
-            name={"Category"}
+            name={"category"}
             register={register}
           ></SelectField>
           {/* Old Price */}
@@ -74,10 +106,9 @@ const AddBook = () => {
           <div className="mt-6 px-3">
             <label className="inline-flex items-center">
               <input
+                {...register("trending")}
                 className="rounded text-blue-600 focus:ring"
                 type="checkbox"
-                value="trending"
-                id
               />
               <span className="ml-2">Trending</span>
             </label>
@@ -88,7 +119,7 @@ const AddBook = () => {
               Cover Image
             </label>
             <input
-              {...register("trending")}
+              {...register("coverImage")}
               type="file"
               accept="image/*"
               onChange={handleFileChange}

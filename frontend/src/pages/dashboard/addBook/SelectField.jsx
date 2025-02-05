@@ -8,7 +8,7 @@ const SelectField = ({ options, label, name, register }) => {
         {label}
       </label>
       <select
-        {...register(name, { require: true })}
+        {...register(name, { required: true })}
         className="py-2 px-3 hover:outline-none border"
       >
         {options.map((option, index) => {

@@ -28,6 +28,23 @@ export const deleteABook = createAsyncThunk("books/deleteABook", async (id) => {
   return id;
 });
 
+export const addBook = createAsyncThunk("books/addBook", async (data) => {
+  const token = localStorage.getItem("token");
+  console.log(token);
+  console.log(data);
+  const { data: response } = await axios.post(
+    "http://localhost:5000/api/books/create/",
+    data,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return response;
+});
+
 const initialState = {
   book: {},
   books: [],
@@ -58,6 +75,10 @@ const bookSlice = createSlice({
     });
     builder.addCase(deleteABook.fulfilled, (state, action) => {
       state.books = state.books.filter((book) => book._id !== action.payload);
+      state.loading = false;
+    });
+    builder.addCase(addBook.fulfilled, (state, action) => {
+      state.books.push(action.payload);
       state.loading = false;
     });
   },

@@ -48,17 +48,18 @@ const DashBoardLayout = () => {
                   </div>
                 </Link>
               </li>
-              <li className="flex justify-center py-4">
-                <Link to={"/"}>
-                  <div className="py-3 px-5 rounded-md hover:bg-slate-200 group">
-                    <IoApps className="text-gray-400 size-5 group-hover:text-gray-900" />
-                  </div>
-                </Link>
-              </li>
+
               <li className="flex justify-center py-4">
                 <Link to={"/dashboard/manage-books"}>
                   <div className="py-3 px-5 rounded-md hover:bg-slate-200 group">
                     <IoAnalyticsSharp className="text-gray-400 size-5 group-hover:text-gray-900" />
+                  </div>
+                </Link>
+              </li>
+              <li className="flex justify-center py-4">
+                <Link to={"/"}>
+                  <div className="py-3 px-5 rounded-md hover:bg-slate-200 group">
+                    <IoApps className="text-gray-400 size-5 group-hover:text-gray-900" />
                   </div>
                 </Link>
               </li>
