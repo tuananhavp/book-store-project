@@ -30,7 +30,7 @@ const BookCard = ({ book }) => {
           <Link to={`/book/${book._id}`}>
             <h3 className="font-medium text-lg hover:text-blue-500">
               {book.title.length > 15
-                ? `${book.description.slice(0, 15)}...`
+                ? `${book.title.slice(0, 15)}...`
                 : book.title}
             </h3>
           </Link>

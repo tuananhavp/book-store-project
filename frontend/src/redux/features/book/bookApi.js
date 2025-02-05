@@ -42,8 +42,28 @@ export const addBook = createAsyncThunk("books/addBook", async (data) => {
       },
     }
   );
-  return response;
+  return response.json();
 });
+
+export const updateABook = createAsyncThunk(
+  "books/updateABook",
+  async ({ id, data }) => {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    console.log(data);
+    const response = await axios.put(
+      `http://localhost:5000/api/books/update/${id}`,
+      data,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return id;
+  }
+);
 
 const initialState = {
   book: {},
@@ -55,7 +75,11 @@ const initialState = {
 const bookSlice = createSlice({
   name: "book",
   initialState,
-  reducers: {},
+  reducers: {
+    clearBook: (state) => {
+      state.book = {};
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAllBook.pending, (state) => {
@@ -81,7 +105,14 @@ const bookSlice = createSlice({
       state.books.push(action.payload);
       state.loading = false;
     });
+    builder.addCase(updateABook.fulfilled, (state, action) => {
+      state.books = state.books.map((book) =>
+        book._id === action.payload._id ? action.payload : book
+      );
+      state.loading = false;
+    });
   },
 });
 
+export const { clearBook } = bookSlice.actions;
 export default bookSlice.reducer;

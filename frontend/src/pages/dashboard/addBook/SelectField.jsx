@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-const SelectField = ({ options, label, name, register }) => {
+const SelectField = ({ options, label, name, register, value }) => {
   return (
     <div className="flex flex-col mb-2 p-2 ">
       <label className="font-bold text-gray-600 mb-2 text-sm" htmlFor="">
@@ -28,5 +28,6 @@ SelectField.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string,
   register: PropTypes.func,
+  value: PropTypes.any,
 };
 export default SelectField;

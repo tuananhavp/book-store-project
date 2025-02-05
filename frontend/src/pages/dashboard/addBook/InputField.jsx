@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-const InputField = ({ label, type, name, placeholder, register }) => {
+const InputField = ({ label, type, name, placeholder, register, value }) => {
   return (
     <div className="flex flex-col mb-2 p-2 ">
       <label className="font-bold text-gray-600 mb-2 text-sm" htmlFor="">
@@ -20,8 +20,9 @@ export default InputField;
 
 InputField.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.any,
   name: PropTypes.string,
   placeholder: PropTypes.string,
   register: PropTypes.func,
+  value: PropTypes.any,
 };

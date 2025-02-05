@@ -62,6 +62,9 @@ const AddBook = () => {
   return (
     <div className="w-full flex flex-col items-center ">
       <div className="2xl:w-2/6 w-3/4 p-6 shadow-md rounded-sm bg-white">
+        <div>
+          <h2 className="font-bold text-2xl text-gray-600 p-2">Add Book</h2>
+        </div>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* TitleTitle */}
           <InputField
