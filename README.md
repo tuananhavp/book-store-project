@@ -1,5 +1,5 @@
 <h1>Book Store Project</h1>
-I have made this model project with all the basic features of users such as viewing books, additional shopping carts, checking payments, and saving orders history. As for the admin, there are basic functions such as adding, repairing, deleting books
+I have made this model project using ReactJS, TallWind, NodeJS, Express, and MongoDB. This product has basic user features such as viewing books, additional shopping carts, checking payments, and saving order history. As for the admin, there are basic functions such as adding, repairing, and deleting books
 
 ---------------------------------------------------------------
 Here are some demo pictures:
